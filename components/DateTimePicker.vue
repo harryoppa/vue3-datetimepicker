@@ -7,7 +7,7 @@
                    :class="[inputClass, {'form-control-lg': size === 'lg'}]"
                    :placeholder="placeholder" aria-label="Username" aria-describedby="basic-addon1">
             <span class="input-group-text" id="basic-addon1">
-                <i class="fal fa-calendar text-extra-large"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Calendar</title><rect fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" x="48" y="80" width="416" height="384" rx="48"/><circle cx="296" cy="232" r="24"/><circle cx="376" cy="232" r="24"/><circle cx="296" cy="312" r="24"/><circle cx="376" cy="312" r="24"/><circle cx="136" cy="312" r="24"/><circle cx="216" cy="312" r="24"/><circle cx="136" cy="392" r="24"/><circle cx="216" cy="392" r="24"/><circle cx="296" cy="392" r="24"/><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" stroke-linecap="round" d="M128 48v32M384 48v32"/><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" d="M464 160H48"/></svg>
             </span>
         </div>
 
@@ -191,55 +191,15 @@ export default {
         position: absolute;
         z-index: 198;
     }
-    //trigger
-    .calendarTrigger {
-        position: relative;
-        overflow: hidden;
-        display: block;
-        width: 100%;
-        min-width: 300px;
-        height: 50px;
-        border-radius: 3px;
-        background: #fff;
-        border: 1px solid $silver-two;
-        transition-duration: 1s;
 
-        &:hover {
-            border: 1px solid $secondary-01;
-            .iconCalendar {
-                color: $secondary-01;
+    .input-search {
+        .input-group-text {
+            svg {
+                width: 24px;
+                height: 24px;
+                margin-top: 2px;
+                margin-left: -2px;
             }
-        }
-        &.active {
-            border-color: $secondary-01;
-            .iconCalendar {
-                color: $secondary-01;
-            }
-        }
-
-        .calendarInput {
-            background: #fff;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            color: $secondary-01;
-            font-size: 16px;
-            padding: 20px 20px 20px 50px;
-            outline: none;
-            z-index: 1;
-            cursor: pointer;
-        }
-        .iconCalendar {
-            position: absolute;
-            z-index: 2;
-            width: 50px;
-            height: 50px;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            color: $silver;
         }
     }
 }
