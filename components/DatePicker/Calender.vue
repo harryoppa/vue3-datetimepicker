@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import utils from "../../lib/date";
+import * as utils from "../../lib/date";
 
 const isToday = otherDay => {
   const today = new Date();
@@ -60,13 +60,10 @@ export default {
       default: false
     }
   },
+  inject: ['minDate'],
   methods: {
     callOnChange: function(returnData) {
       return this.$emit("onChange", { ...returnData });
-
-      if (this.onChange) {
-        return this.onChange({ ...returnData });
-      }
     },
     updateSelectingSingleDay: function(day) {
       if (!day) return;
@@ -119,7 +116,9 @@ export default {
     getDayStyle: function(day) {
       const { innerStartDate, innerEndDate, year, month } = this;
       const currentDay = new Date(`${year}-${month + 1}-${day}`);
+      const minDate = this.minDate;
 
+      if (minDate && utils.isLessThan(currentDay, minDate)) return "tvh-disabled";
       if (utils.isSameDay(currentDay, innerStartDate)) return "tvh-innerStartDate";
       if (utils.isSameDay(currentDay, innerEndDate)) return "tvh-innerEndDate";
       if (isBetweenDays(innerStartDate, innerEndDate, currentDay))
@@ -205,6 +204,12 @@ ul.tvh-calendar {
       }
       &.tvh-between {
         background: #eaf0fd;
+      }
+
+      &.tvh-disabled {
+        pointer-events: none;
+        background: #f9f9f9;
+        color: #ccc;
       }
     }
   }

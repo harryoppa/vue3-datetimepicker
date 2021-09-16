@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import utils from "../../lib/date";
+import * as utils from "../../lib/date";
 import Calender from "./Calender.vue";
 
 export default {

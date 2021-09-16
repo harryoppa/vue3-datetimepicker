@@ -13,10 +13,11 @@
 
         <date-time-picker-modal
             v-if="isOpen"
-            :class="{ fadeInDown: isOpen }"
+            :class="{ 'tvh-fadeInDown': isOpen }"
             :singleDate="singleDate"
             :startDate="startDate"
             :endDate="endDate"
+            :minDate="minDate"
             :timeFormat="timeFormat"
             @submitHandler="submitHandler"
             @cancelHandler="isOpen = false"
@@ -30,7 +31,7 @@
 
 <script>
 import DateTimePickerModal from "./DateTimePickerModal.vue";
-import utils from "../lib/date";
+import * as utils from "../lib/date";
 import { getTimeObjectFromDate } from "../lib/time";
 
 const BOX_LENGTH = 750; //px
@@ -61,6 +62,7 @@ export default {
     props: {
         startDate: Date,
         endDate: Date,
+        minDate: Date,
         timeFormat: {
             type: String,
             default: "hh:mm:A"
@@ -157,6 +159,14 @@ export default {
                 document.removeEventListener('click', this.closeHandler)
             }
         }
+    },
+    provide() {
+        return {
+            startDate: this.startDate,
+            endDate: this.endDate,
+            minDate: this.minDate,
+            onChange: this.onChange,
+        }
     }
 };
 </script>
@@ -176,7 +186,7 @@ export default {
     }
 }
 
-.fadeInDown {
+.tvh-fadeInDown {
     animation: fadeInDown 0.6s ease both;
 }
 

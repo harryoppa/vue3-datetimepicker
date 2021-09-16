@@ -1,7 +1,7 @@
 <template>
-  <span class="time-picker">
+  <span class="tvh-time-picker">
     <input
-      class="display-time"
+      class="tvh-display-time"
       :id="id"
       v-model="displayTime"
       @click.stop="toggleDropdown"
@@ -9,53 +9,53 @@
       readonly
     />
     <span
-      class="clear-btn"
+      class="tvh-clear-btn"
       v-if="!hideClearButton"
       v-show="!showDropdown && showClearBtn"
       @click.stop="clearTime"
       >&times;</span
     >
     <div
-      class="time-picker-overlay"
+      class="tvh-time-picker-overlay"
       v-if="showDropdown"
       @click.stop="toggleDropdown"
     ></div>
-    <div class="dropdown" v-show="showDropdown">
-      <div class="select-list">
-        <ul class="hours">
-          <li class="hint" v-text="hourType"></li>
+    <div class="tvh-dropdown" v-show="showDropdown">
+      <div class="tvh-select-list">
+        <ul class="tvh-hours">
+          <li class="tvh-hint" v-text="hourType"></li>
           <li
             v-for="(hr, key) in hours"
             v-text="hr"
-            :class="{ active: hour === hr }"
+            :class="{ 'tvh-active': hour === hr }"
             @click.stop="selectHandler('hour', hr)"
             :key="key + '-label'"
           ></li>
         </ul>
-        <ul class="minutes">
-          <li class="hint" v-text="minuteType"></li>
+        <ul class="tvh-minutes">
+          <li class="tvh-hint" v-text="minuteType"></li>
           <li
             v-for="(m, key) in minutes"
             v-text="m"
-            :class="{ active: minute === m }"
+            :class="{ 'tvh-active': minute === m }"
             @click.stop="selectHandler('minute', m)"
           ></li>
         </ul>
-        <ul class="seconds" v-if="secondType">
-          <li class="hint" v-text="secondType"></li>
+        <ul class="tvh-seconds" v-if="secondType">
+          <li class="tvh-hint" v-text="secondType"></li>
           <li
             v-for="(s, key) in seconds"
             v-text="s"
-            :class="{ active: second === s }"
+            :class="{ 'tvh-active': second === s }"
             @click.stop="selectHandler('second', s)"
           ></li>
         </ul>
-        <ul class="apms" v-if="apmType">
-          <li class="hint" v-text="apmType"></li>
+        <ul class="tvh-apms" v-if="apmType">
+          <li class="tvh-hint" v-text="apmType"></li>
           <li
             v-for="(a, key) in apms"
             v-text="a"
-            :class="{ active: apm === a }"
+            :class="{ 'tvh-active': apm === a }"
             @click.stop="selectHandler('apm', a)"
           ></li>
         </ul>
@@ -394,14 +394,14 @@ export default {
 <style lang="scss" scoped>
 @import "../../style/main";
 
-.time-picker {
+.tvh-time-picker {
   width: 100%;
   height: 50px;
   display: inline-block;
   font-size: 16px;
   position: relative;
 
-  input.display-time {
+  input.tvh-display-time {
     width: 100%;
     min-width: 200px;
     border: 1px solid $silver-two;
@@ -420,7 +420,7 @@ export default {
       border: 1px solid $secondary-01;
     }
   }
-  .clear-btn {
+  .tvh-clear-btn {
     position: absolute;
     z-index: 3;
     top: 8px;
@@ -434,7 +434,7 @@ export default {
       cursor: pointer;
     }
   }
-  .time-picker-overlay {
+  .tvh-time-picker-overlay {
     z-index: 2;
     position: fixed;
     top: 0;
@@ -442,7 +442,7 @@ export default {
     right: 0;
     bottom: 0;
   }
-  .dropdown {
+  .tvh-dropdown {
     position: absolute;
     z-index: 5;
     background: #fff;
@@ -450,7 +450,7 @@ export default {
     width: 100%;
     height: 180px;
 
-    .select-list {
+    .tvh-select-list {
       width: 100%;
       height: 100%;
       overflow: hidden;
@@ -465,29 +465,29 @@ export default {
         flex: 1;
         overflow-x: hidden;
         overflow-y: auto;
-        &.minutes,
-        &.seconds,
-        &.apms {
+        &.tvh-minutes,
+        &.tvh-seconds,
+        &.tvh-apms {
           border-left: 1px solid #fff;
         }
         li {
           text-align: center;
           padding: 6px 0;
           color: $dark;
-          &.active,
-          &.active:hover {
+          &.tvh-active,
+          &.tvh-active:hover {
             background: $secondary-01;
             color: #fff;
           }
         }
-        li:not(.hint):hover {
+        li:not(.tvh-hint):hover {
           background: rgba(0, 0, 0, 0.08);
           color: $dark;
           cursor: pointer;
         }
       }
     }
-    .hint {
+    .tvh-hint {
       color: $bluey-grey;
       font-size: 16px;
     }

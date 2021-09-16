@@ -49,7 +49,7 @@
 <script>
 import TimePicker from "./TimePicker";
 import DatePicker from "./DatePicker";
-import utils from "../lib/date";
+import * as utils from "../lib/date";
 import { getTimeObjectFromDate } from "../lib/time";
 
 const DEFAULT_START_TIME = {
@@ -152,6 +152,7 @@ export default {
         submitHandler: Function,
         startDate: Date,
         endDate: Date,
+        minDate: Date,
         timeFormat: {
             type: String,
             default: "hh:mm:A"
