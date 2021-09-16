@@ -1,5 +1,5 @@
 <template>
-    <div class="dateTimePickerWrapper" ref="wrapper">
+    <div class="tvh-dateTimePickerWrapper" ref="wrapper">
         <div class="input-group input-search" @click="openHandler" :class="{'input-group-lg': size === 'lg'}">
             <input type="text"
                    :value="selectDateString"
@@ -129,7 +129,7 @@ export default {
             return this.callOnChange(data);
         },
         closeHandler(evt) {
-            if (!document.querySelector('.dateTimeWrapper').contains(evt.target))
+            if (!document.querySelector('.tvh-dateTimeWrapper').contains(evt.target))
             this.isOpen = false;
         }
     },
@@ -181,11 +181,11 @@ export default {
 }
 
 /* compomnent style */
-.dateTimePickerWrapper {
+.tvh-dateTimePickerWrapper {
     position: relative;
 
     //modal
-    .dateTimeWrapper {
+    .tvh-dateTimeWrapper {
         opacity: 0;
         left: 0;
         position: absolute;

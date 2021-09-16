@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div class="datePicker_wrap">
-      <div class="calendar-header">
-        <span class="arrow icon-left" @click="minusMonth"> <i class="fal fa-chevron-left"></i> </span>
+    <div class="tvh-datePicker_wrap">
+      <div class="tvh-calendar-header">
+        <span class="tvh-arrow tvh-icon-left" @click="minusMonth"> <i class="fal fa-chevron-left"></i> </span>
         <h3 class="m-0">
-          <strong class="currentMonth">{{ currentMonthString }}</strong>
-          <span class="currentYear">{{ currentYear }}</span>
+          <strong class="tvh-currentMonth">{{ currentMonthString }}</strong>
+          <span class="tvh-currentYear">{{ currentYear }}</span>
         </h3>
-        <span class="arrow icon-right" @click="addMonth"> <i class="fal fa-chevron-right"></i></span>
+        <span class="tvh-arrow icon-right" @click="addMonth"> <i class="fal fa-chevron-right"></i></span>
       </div>
 
       <calender
@@ -112,14 +112,14 @@ export default {
 <style lang="scss" scoped>
 @import "../../style/main";
 
-.datePicker_wrap {
-  .calendar-header {
+.tvh-datePicker_wrap {
+  .tvh-calendar-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 25px;
 
-    span.arrow {
+    span.tvh-arrow {
       width: 66px;
       height: 42px;
       background: $pale-grey-two;
@@ -136,7 +136,7 @@ export default {
         color: #fff;
       }
     }
-    .icon-left {
+    .tvh-icon-left {
       margin-left: 5px;
     }
     .icon-right {
@@ -146,7 +146,7 @@ export default {
       font-size: 18px;
       color: $dark;
     }
-    .currentYear {
+    .tvh-currentYear {
       font-weight: 400;
       margin-left: 10px;
     }

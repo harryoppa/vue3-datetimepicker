@@ -1,7 +1,7 @@
 <template>
-    <div class="dateTimeWrapper">
-        <div class="containerWrapper">
-            <div class="dateContainer">
+    <div class="tvh-dateTimeWrapper">
+        <div class="tvh-containerWrapper">
+            <div class="tvh-dateContainer">
                 <DatePicker
                     ref="datePickerRef"
                     :startDate="innerStartDate"
@@ -10,11 +10,11 @@
                     :singleDate="singleDate"
                 />
             </div>
-            <div class="timeContainer">
-                <div class="startTime timeRow">
-                    <span class="subTitle">From</span>
+            <div class="tvh-timeContainer">
+                <div class="tvh-startTime tvh-timeRow">
+                    <span class="tvh-subTitle">From</span>
                     <div>
-                        <span class="bigNumber">{{ innerStartDate.getDate() }}</span>
+                        <span class="tvh-bigNumber">{{ innerStartDate.getDate() }}</span>
                         {{ getShortMonth(innerStartDate.getMonth()) }}
                         {{ innerStartDate.getFullYear() }}
                     </div>
@@ -24,10 +24,10 @@
                         @change="_onChangeTimeStart"
                     />
                 </div>
-                <div class="endTime timeRow" v-if="!singleDate">
-                    <span class="subTitle">To</span>
+                <div class="tvh-endTime tvh-timeRow" v-if="!singleDate">
+                    <span class="tvh-subTitle">To</span>
                     <div>
-                        <span class="bigNumber">{{ innerEndDate.getDate() }}</span>
+                        <span class="tvh-bigNumber">{{ innerEndDate.getDate() }}</span>
                         {{ getShortMonth(innerEndDate.getMonth()) }}
                         {{ innerEndDate.getFullYear() }}
                     </div>
@@ -39,9 +39,9 @@
                 </div>
             </div>
         </div>
-        <div class="buttonWrap">
-            <a class="confirm" @click.stop.prevent="__onSubmit">submit</a>
-            <a class="cancel" @click.stop.prevent="__onCancel">cancel</a>
+        <div class="tvh-buttonWrap">
+            <a class="tvh-confirm" @click.stop.prevent="__onSubmit">submit</a>
+            <a class="tvh-cancel" @click.stop.prevent="__onCancel">cancel</a>
         </div>
     </div>
 </template>
@@ -186,32 +186,32 @@ export default {
 <style lang="scss" scoped>
 @import "../style/main";
 
-.dateTimeWrapper {
+.tvh-dateTimeWrapper {
     max-width: 768px;
     background: #fff;
     box-shadow: 0 20px 50px rgba(183, 185, 188, 0.35);
 
-    .containerWrapper {
+    .tvh-containerWrapper {
         display: flex;
         padding: 40px 30px 20px 30px;
-        .dateContainer {
+        .tvh-dateContainer {
             padding: 0 30px;
             border-right: 1px solid $pale-grey-two;
         }
-        .timeContainer {
+        .tvh-timeContainer {
             padding: 0 30px;
-            .timeRow {
+            .tvh-timeRow {
                 display: flex;
                 flex-direction: column;
                 text-align: left;
                 padding: 15px 0;
 
-                .subTitle {
+                .tvh-subTitle {
                     font-size: 13px;
                     color: $bluey-grey;
                 }
 
-                .bigNumber {
+                .tvh-bigNumber {
                     font-size: 34px;
                     letter-spacing: 3px;
                     line-height: 45px;
@@ -221,7 +221,7 @@ export default {
             }
         }
     }
-    .buttonWrap {
+    .tvh-buttonWrap {
         display: flex;
         width: 100%;
         flex-direction: row-reverse;
@@ -243,26 +243,26 @@ export default {
                 outline: none;
             }
 
-            &.confirm {
+            &.tvh-confirm {
                 color: #fff;
                 background: $primary-01;
             }
-            &.cancel {
+            &.tvh-cancel {
                 color: $bluey-grey;
             }
         }
     }
 }
 @media only screen and (max-width: 700px) {
-    .dateTimeWrapper {
+    .tvh-dateTimeWrapper {
         width: 100%;
-        .containerWrapper {
+        .tvh-containerWrapper {
             display: block;
-            .dateContainer {
+            .tvh-dateContainer {
                 margin-bottom: 40px;
                 border-right: none;
-                .datePicker_wrap {
-                    ul.calendar {
+                .tvh-datePicker_wrap {
+                    ul.tvh-calendar {
                         li {
                             width: 70px;
                         }
@@ -273,17 +273,17 @@ export default {
     }
 }
 @media only screen and (max-width: 480px) {
-    .dateTimeWrapper {
-        .containerWrapper {
-            .dateContainer,
-            .timeContainer {
+    .tvh-dateTimeWrapper {
+        .tvh-containerWrapper {
+            .tvh-dateContainer,
+            .tvh-timeContainer {
                 padding: 0;
-                .timeRow {
+                .tvh-timeRow {
                     padding: 8px 0;
                 }
             }
         }
-        .buttonWrap {
+        .tvh-buttonWrap {
             padding: 20px 30px 30px 0;
         }
     }

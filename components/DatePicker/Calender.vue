@@ -1,18 +1,18 @@
 <template>
   <div>
-    <ul class="calendar">
+    <ul class="tvh-calendar">
       <template v-for="(weekday, key) in weekdays" :key="'weekday' + key">
-        <li class="weekday">
+        <li class="tvh-weekday">
           <span>{{ weekday }}</span>
         </li>
       </template>
       <template v-for="(day, key) in startWeekday" :key="'null' + key">
-        <li class="day">
+        <li class="tvh-day">
           <!-- <span class="nullBlock"></span> -->
         </li>
       </template>
       <template v-for="(day, key) in daysCount" :key="'day' + key">
-        <li class="day">
+        <li class="tvh-day">
           <span
             v-if="!singleDate"
             :class="getDayStyle(day)"
@@ -120,11 +120,11 @@ export default {
       const { innerStartDate, innerEndDate, year, month } = this;
       const currentDay = new Date(`${year}-${month + 1}-${day}`);
 
-      if (utils.isSameDay(currentDay, innerStartDate)) return "innerStartDate";
-      if (utils.isSameDay(currentDay, innerEndDate)) return "innerEndDate";
+      if (utils.isSameDay(currentDay, innerStartDate)) return "tvh-innerStartDate";
+      if (utils.isSameDay(currentDay, innerEndDate)) return "tvh-innerEndDate";
       if (isBetweenDays(innerStartDate, innerEndDate, currentDay))
-        return "between";
-      if (isToday(currentDay)) return "today";
+        return "tvh-between";
+      if (isToday(currentDay)) return "tvh-today";
 
       return "";
     }
@@ -156,7 +156,7 @@ export default {
 <style lang="scss" scoped>
 @import "../../style/main";
 
-ul.calendar {
+ul.tvh-calendar {
   width: 364px;
   display: flex;
   flex-wrap: wrap;
@@ -167,14 +167,14 @@ ul.calendar {
     display: inline-block;
     width: 52px;
   }
-  li.weekday {
+  li.tvh-weekday {
     font-size: 14px;
     color: $silver;
     font-weight: 600;
     margin-bottom: 8px;
     text-align: center;
   }
-  li.day {
+  li.tvh-day {
     span {
       width: 100%;
       height: 40px;
@@ -192,25 +192,25 @@ ul.calendar {
         background: $secondary-01;
         transition-duration: 0.3s;
       }
-      &.today {
+      &.tvh-today {
         box-shadow: inset 0 0 0 2px $secondary-01;
       }
-      &.innerStartDate {
+      &.tvh-innerStartDate {
         background: $secondary-01;
         color: #fff;
       }
-      &.innerEndDate {
+      &.tvh-innerEndDate {
         background: $secondary-01;
         color: #fff;
       }
-      &.between {
+      &.tvh-between {
         background: #eaf0fd;
       }
     }
   }
 }
 @media only screen and (max-width: 700px) {
-  ul.calendar {
+  ul.tvh-calendar {
     width: 100%;
     li {
       width: calc(100% / 7);
