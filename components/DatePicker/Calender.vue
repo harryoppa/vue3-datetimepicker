@@ -116,7 +116,7 @@ export default {
     getDayStyle: function(day) {
       const { innerStartDate, innerEndDate, year, month } = this;
       const currentDay = new Date(`${year}-${month + 1}-${day}`);
-      const minDate = this.minDate;
+      const minDate = this.minDate();
 
       if (minDate && utils.isLessThan(currentDay, minDate)) return "tvh-disabled";
       if (utils.isSameDay(currentDay, innerStartDate)) return "tvh-innerStartDate";

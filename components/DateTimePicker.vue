@@ -17,7 +17,6 @@
             :singleDate="singleDate"
             :startDate="startDate"
             :endDate="endDate"
-            :minDate="minDate"
             :timeFormat="timeFormat"
             @submitHandler="submitHandler"
             @cancelHandler="isOpen = false"
@@ -158,13 +157,16 @@ export default {
             } else {
                 document.removeEventListener('click', this.closeHandler)
             }
+        },
+        minDate() {
+            this.selectDateString = _getDateString(this.minDate, this.timeFormat);
         }
     },
     provide() {
         return {
             startDate: this.startDate,
             endDate: this.endDate,
-            minDate: this.minDate,
+            minDate: () => this.minDate,
             onChange: this.onChange,
         }
     }

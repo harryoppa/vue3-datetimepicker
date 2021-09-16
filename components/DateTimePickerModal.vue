@@ -152,7 +152,6 @@ export default {
         submitHandler: Function,
         startDate: Date,
         endDate: Date,
-        minDate: Date,
         timeFormat: {
             type: String,
             default: "hh:mm:A"
