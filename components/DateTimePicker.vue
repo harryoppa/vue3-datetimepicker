@@ -152,9 +152,11 @@ export default {
         isOpen() {
             if (this.isOpen) {
                 setTimeout(() => {
+                    this.$emit('open');
                     document.addEventListener('click', this.closeHandler)
                 }, 100)
             } else {
+                this.$emit('close')
                 document.removeEventListener('click', this.closeHandler)
             }
         },
