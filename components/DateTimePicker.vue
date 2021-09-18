@@ -11,20 +11,27 @@
             </span>
         </div>
 
-        <date-time-picker-modal
-            v-if="isOpen"
-            :class="{ 'tvh-fadeInDown': isOpen }"
-            :singleDate="singleDate"
-            :startDate="startDate"
-            :endDate="endDate"
-            :timeFormat="timeFormat"
-            @submitHandler="submitHandler"
-            @cancelHandler="isOpen = false"
-            :style="{
-        marginLeft: `-${shiftMarginLeft}px`,
-        marginTop: `-${shiftMarginHeight}px`
-      }"
-        />
+        <teleport to="body">
+            <date-time-picker-modal
+                v-if="isOpen"
+                :class="{ 'tvh-fadeInDown': isOpen }"
+                :singleDate="singleDate"
+                :startDate="startDate"
+                :endDate="endDate"
+                :timeFormat="timeFormat"
+                @submitHandler="submitHandler"
+                @cancelHandler="isOpen = false"
+                :style="{
+                    position: 'absolute',
+                    top: absoluteTop + 'px',
+                    left: absoluteLeft + 'px',
+                    zIndex: 1000000
+                    // marginLeft: `-${shiftMarginLeft}px`,
+                    // marginTop: `-${shiftMarginHeight}px`
+                }"
+            />
+
+        </teleport>
     </div>
 </template>
 
@@ -32,9 +39,11 @@
 import DateTimePickerModal from "./DateTimePickerModal.vue";
 import * as utils from "../lib/date";
 import { getTimeObjectFromDate } from "../lib/time";
+import {Teleport} from "vue";
 
 const BOX_LENGTH = 750; //px
 const BOX_HEIGHT = 510; //px
+const BOX_WIDTH = 745;
 const RWD_THRESHOLD_W = 700;
 
 const _getDateString = (date, format = "hh:mm:A") => {
@@ -85,7 +94,19 @@ export default {
 
             const wrapper = this.$refs.wrapper;
 
-            const { x, y } = wrapper.getBoundingClientRect();
+            const { x, y, top, left } = wrapper.getBoundingClientRect();
+
+            const absoluteTop = top + wrapper.offsetHeight - BOX_HEIGHT + document.documentElement.scrollTop - 30;
+            const absoluteLeft = left;
+
+
+
+
+
+
+            this.absoluteLeft = absoluteLeft - (Math.max(0, BOX_WIDTH - (window.innerWidth - left)));
+            this.absoluteTop = absoluteTop + (Math.max(0, BOX_HEIGHT - top));
+
 
             const dx = windowWidth - x;
             const isDesktop = windowWidth > RWD_THRESHOLD_W;
@@ -140,6 +161,10 @@ export default {
             isOpen: false,
             shiftMarginLeft: 0,
             shiftMarginHeight: 0,
+
+            absoluteTop: 0,
+            absoluteLeft: 0,
+
             selectDateString: !startDate
                 ? ""
                 : this.getDateString({
