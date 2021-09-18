@@ -19,7 +19,7 @@
     "datetimepicker"
   ],
   "dependencies": {
-    "node-sass": "^4.11.0",
+    "node-sass": "^6.0.1",
     "sass-loader": "^12.1.0",
     "vue": "^3.1"
   },
