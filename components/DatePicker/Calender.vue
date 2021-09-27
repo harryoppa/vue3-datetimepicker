@@ -131,7 +131,7 @@ export default {
   computed: {
     startWeekday: function() {
       return utils.getWeekday(
-        new Date(`${this.year}-${this.month + 1}-01`).getTime()
+        new Date(`${utils.lessThanTen(this.year)}-${utils.lessThanTen(this.month + 1)}-01`).getTime()
       );
     },
 

@@ -22,6 +22,7 @@
                         :format="timeFormat"
                         v-bind:value="defaultStartTime"
                         @change="_onChangeTimeStart"
+                        size="lg"
                     />
                 </div>
                 <div class="tvh-endTime tvh-timeRow" v-if="!singleDate">
@@ -35,6 +36,7 @@
                         :format="timeFormat"
                         v-bind:value="defaultEndTime"
                         @change="_onChangeTimeEnd"
+                        size="lg"
                     />
                 </div>
             </div>

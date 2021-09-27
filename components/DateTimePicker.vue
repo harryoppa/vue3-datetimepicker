@@ -230,16 +230,5 @@ export default {
         position: absolute;
         z-index: 198;
     }
-
-    .input-search {
-        .input-group-text {
-            svg {
-                width: 24px;
-                height: 24px;
-                margin-top: 2px;
-                margin-left: -2px;
-            }
-        }
-    }
 }
 </style>
