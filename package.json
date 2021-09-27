@@ -1,6 +1,6 @@
 {
   "name": "@harryoppa/vue3-datetimepicker",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Vue 3 datepicker",
   "main": "index.js",
   "directories": {
